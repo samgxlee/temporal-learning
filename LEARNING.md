@@ -34,3 +34,35 @@ What happens if the Worker stops before a Workflow finishes? I want to test that
 
 - [Temporal’s TypeScript quickstart](https://docs.temporal.io/develop/typescript/set-up-your-local-typescript)
 - The example code is provided by Temporal. I performed this walkthrough myself, with Codex explaining the steps and helping me interpret the output.
+
+## 30 October 2026 — Work waiting for an available Worker
+
+### Experiment
+
+I stopped the Worker while leaving the Temporal service running, then submitted another Workflow through the Client.
+
+The Client printed a Workflow ID but waited for the greeting. In Temporal’s interface, the execution showed as Running. When I restarted the Worker, the Client received `Hello, Samuel!` without another submission.
+
+### What this demonstrated
+
+Temporal accepted the request while the Worker was unavailable. The work waited until the Worker returned.
+
+“Running” describes an execution that hasn’t finished; it doesn’t necessarily mean application code is executing at that moment.
+
+This tested Worker unavailability before execution. It did not test interrupting an Activity halfway through its work.
+
+## 30 October 2026 — Retrying a temporary Activity failure
+
+### Experiment
+
+With guidance and example code from Codex, I changed the greeting Activity to print its attempt number and deliberately throw an error on attempt 1. I saved the change, restarted the Worker and submitted a new Workflow.
+
+The Worker printed `Greeting attempt 1`, reported the simulated failure, then printed `Greeting attempt 2`. The Client received `Hello, Samuel!`.
+
+### What this demonstrated
+
+I submitted the Workflow once. Temporal retried the failed Activity within that same execution, without a retry loop in my application code.
+
+For the planned demo-submission app, a temporary failure could occur when sending a notification. This experiment demonstrated retry behaviour using a simulated failure; it did not contact a real notification service.
+
+A retry also means an action may be attempted more than once. When building the app, I’ll need to consider how to avoid duplicate notifications or other repeated effects.
