@@ -66,3 +66,27 @@ I submitted the Workflow once. Temporal retried the failed Activity within that 
 For the planned demo-submission app, a temporary failure could occur when sending a notification. This experiment demonstrated retry behaviour using a simulated failure; it did not contact a real notification service.
 
 A retry also means an action may be attempted more than once. When building the app, I’ll need to consider how to avoid duplicate notifications or other repeated effects.
+
+## 31 October 2026 — Checking my understanding
+
+I worked through some questions with Codex to check whether I could explain Temporal in my own words and connect it to a customer’s problem.
+
+### What I clarified
+
+I had been describing Activities as picking up where they left off. That needs more care: Temporal preserves the Workflow’s progress, but a failed Activity normally runs again from its beginning. Completed Activities whose results are recorded do not need to execute again during Workflow recovery.
+
+We explored this through an email example. An email could be sent successfully, but its confirmation could be lost. Retrying the Activity could send another email. Keeping Workflow history does not automatically prevent duplicate external actions; the application needs to handle that.
+
+I also clarified the difference between self-hosting and Temporal Cloud. Cloud manages the Temporal service, while the customer still runs the Workers containing their application code. Self-hosting adds responsibility for operating and maintaining the service.
+
+For a customer conversation, I would ask how failures are handled today, how often engineers intervene and whether recovery preserves completed progress. I would also want to understand the time involved and the effect on customers before suggesting a change.
+
+### What I want to test next
+
+My earlier Worker experiment started with the Worker already stopped. Next, I want to complete one Activity, start a timer and stop the Worker during the wait. After restarting it, I’ll inspect the history to see how the Workflow continues using its recorded progress.
+
+### Sources
+
+- [Temporal overview](https://docs.temporal.io/temporal)
+- [Activities and retries](https://docs.temporal.io/activities)
+- [Event History](https://docs.temporal.io/encyclopedia/event-history)
