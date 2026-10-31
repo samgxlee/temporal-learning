@@ -90,3 +90,9 @@ My earlier Worker experiment started with the Worker already stopped. Next, I wa
 - [Temporal overview](https://docs.temporal.io/temporal)
 - [Activities and retries](https://docs.temporal.io/activities)
 - [Event History](https://docs.temporal.io/encyclopedia/event-history)
+
+## 31 October 2026 — Note for the application review
+
+The entries above retain the sequence of my learning. The recovery exercise described under “What I want to test next” has not been added to this repository with code or an execution record. The application presentation includes an illustration of how recovery uses recorded progress; that illustration is not an execution trace.
+
+The recorded experiments here show the greeting example, work waiting for a Worker and an Activity retry. Workflow recovery is also part of the documentation I studied and the understanding discussion above. The presentation keeps that distinction visible.
