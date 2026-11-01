@@ -96,3 +96,35 @@ My earlier Worker experiment started with the Worker already stopped. Next, I wa
 The entries above retain the sequence of my learning. The recovery exercise described under “What I want to test next” has not been added to this repository with code or an execution record. The application presentation includes an illustration of how recovery uses recorded progress; that illustration is not an execution trace.
 
 The recorded experiments here show the greeting example, work waiting for a Worker and an Activity retry. Workflow recovery is also part of the documentation I studied and the understanding discussion above. The presentation keeps that distinction visible.
+
+## 1 November 2026 — Continuing a Workflow after restarting the Worker
+
+### What I did
+
+With guidance and example code from Codex, I added a recovery Workflow with three steps: record a simulated demo submission, wait five minutes, then send a simulated reminder.
+
+I stopped the Worker during the wait while leaving the Temporal service running, then restarted it.
+
+### What I observed
+
+The Workflow completed after I restarted the Worker. The submission-recorded message did not appear again.
+
+### What I learned
+
+This helped make the distinction between Workflow recovery and Activity retries clearer. The result is consistent with Temporal using the first Activity’s recorded result to continue the process.
+
+The Workflow code can replay to reconstruct its progress without executing an already completed Activity again. That is different from a failed Activity being retried, where another attempt normally starts from the beginning.
+
+For the demo-submission concept, this could allow a scheduled follow-up to continue after a Worker outage. These Activities only printed messages; the experiment did not send an email or test duplicate prevention with an external service.
+
+This was a controlled Worker shutdown during a timer. It did not test interrupting an Activity halfway through or stopping the Temporal service.
+
+### Running the example
+
+From the `my-app` folder, with the Temporal service and Worker running:
+
+`npx ts-node src/recovery-client.ts`
+
+The Workflow waits five minutes between the two simulated Activities.
+
+Reference: [Temporal Event History](https://docs.temporal.io/encyclopedia/event-history).
