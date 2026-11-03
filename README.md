@@ -16,6 +16,15 @@ These are small local experiments. They do not demonstrate a production deployme
 
 - [Learning notes](LEARNING.md): experiments, observations and limitations.
 - [Run the example](my-app/README.md): setup, commands and expected behaviour.
+- [Case-study lessons](lessons/README.md): a four-part learning path using Temporal’s BFI Finance architecture.
+
+## Learning from a customer architecture
+
+The [BFI lesson series](lessons/README.md) connects the local examples to application architecture, human review, data dependencies and safe recovery. Each lesson includes an explanation, a music-submission design example, self-check questions and a proposed exercise.
+
+The case study is published by Temporal. Its reported customer experience is separate from my local observations. The proposed exercises are not implemented or recorded as completed experiments.
+
+The lessons are stored as individual Markdown files with a [lesson index](lessons/index.json), so the same content can be adapted for the website. Website publishing and automatic synchronisation are not configured here.
 
 ## How I would introduce Temporal
 
