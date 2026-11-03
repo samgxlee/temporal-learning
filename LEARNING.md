@@ -128,3 +128,24 @@ From the `my-app` folder, with the Temporal service and Worker running:
 The Workflow waits five minutes between the two simulated Activities.
 
 Reference: [Temporal Event History](https://docs.temporal.io/encyclopedia/event-history).
+
+## 3 November 2026 — Learning from the BFI Finance architecture
+
+### Source material
+
+Temporal’s LinkedIn post and [BFI Finance case study](https://temporal.io/resources/case-studies/bfi) provide a production architecture to study alongside the local examples. The diagram shows application services, automated and human-task Workers, external services and the Temporal service.
+
+### Questions to work through
+
+- Which parts of the architecture belong to the application, and which responsibilities does Temporal handle?
+- How does a process wait for a person and continue after a Worker outage?
+- What does a custom data-dependency planner add to ordinary Workflow sequencing?
+- Why do retries, external effects and changes to running processes still need careful design?
+
+These questions form a [four-part lesson series](lessons/README.md), with source links, self-check questions and proposed exercises. The music-submission examples are illustrative designs, not descriptions of BFI’s implementation.
+
+### Evidence and next steps
+
+This entry records source material and a learning path prepared with Codex assistance. It does not record a new execution or claim that the lessons’ exercises have been completed. The existing timer-recovery experiment remains the practical starting point.
+
+The next proposed implementation is a small review Workflow that receives a decision through a Signal. After implementing and running it, add the observations and limitations here before describing it as demonstrated behaviour.

@@ -1,0 +1,44 @@
+{
+  "title": "Lessons from the BFI Finance case study",
+  "source": {
+    "title": "BFI Finance loan origination case study",
+    "publisher": "Temporal",
+    "url": "https://temporal.io/resources/case-studies/bfi",
+    "publishedOn": "2026-10-15"
+  },
+  "reviewedOn": "2026-11-03",
+  "lessons": [
+    {
+      "id": "bfi-01",
+      "title": "Reading the architecture",
+      "summary": "Identify the application services, Workers and Temporal service, and explain their responsibilities.",
+      "path": "bfi/01-reading-the-architecture.md",
+      "readingMinutes": 6,
+      "practiceStatus": "planned"
+    },
+    {
+      "id": "bfi-02",
+      "title": "Waiting for human review",
+      "summary": "Use Signals, Queries and durable waiting to reason about a process that needs a person’s decision.",
+      "path": "bfi/02-waiting-for-human-review.md",
+      "readingMinutes": 7,
+      "practiceStatus": "planned"
+    },
+    {
+      "id": "bfi-03",
+      "title": "Letting data guide the process",
+      "summary": "Distinguish BFI’s custom dependency planner from Temporal’s execution guarantees.",
+      "path": "bfi/03-letting-data-guide-the-process.md",
+      "readingMinutes": 7,
+      "practiceStatus": "planned"
+    },
+    {
+      "id": "bfi-04",
+      "title": "Retrying and changing a running process",
+      "summary": "Explain duplicate external effects, business decisions, Workflow Reset and deployment compatibility.",
+      "path": "bfi/04-retries-and-safe-changes.md",
+      "readingMinutes": 8,
+      "practiceStatus": "planned"
+    }
+  ]
+}
